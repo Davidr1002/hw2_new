@@ -69,13 +69,30 @@
 # Delete existing data, so you'll start fresh each time this script is run.
 # Use `Model.destroy_all` code.
 # TODO!
+Model.destroy_all
+
 
 # Generate models and tables, according to the domain model
 # TODO!
 
+p Model.all.count
+
 # Insert data into your database that reflects the sample data shown above
 # Do not use hard-coded foreign key IDs.
 # TODO!
+
+values_1 = { name: "Batman Begins", year: "2005", PG: "PG-13", director: "Christopher Nolan" }
+batman_begins = Model.new(values_1)
+batman_begins.save
+
+values_2 = { name: "The Dark Knight", year: "2008", PG: "PG-13", director: "Christopher Nolan" }
+dark_knight = Model.new(values_2)
+dark_knight.save
+
+values_3 = { name: "The Dark Knight Rises", year: "2012", PG: "PG-13", director: "Christopher Nolan" }
+dark_knight_rises = Model.new(values_3)
+dark_knight_rises.save
+
 
 # Prints a header for the movies output
 puts "Movies"
@@ -85,6 +102,12 @@ puts ""
 # Query the movies data and loop through the results to display the movies output
 # TODO!
 
+movies = Movie.all
+
+    for movie in movies
+        puts "#{movie.name} #{movie.year} #{movie.pg} #{movie.director}"
+    end
+
 # Prints a header for the cast output
 puts ""
 puts "Top Cast"
@@ -93,3 +116,9 @@ puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie
 # TODO!
+
+movies = Movie.all
+
+    for movie in movies
+        puts "#{movie.name} #{movie.person} #{movie.role}"
+    end
